@@ -1,0 +1,62 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+int main()
+{
+    int Zeile, Position, matrix [8] [8] =  {0}, x_Wert = 0, y_Wert = 0, y_alt = 0, x_alt = 0;
+    char zug;
+
+    do{
+            system("cls");
+            for (Zeile = 0; Zeile < 8; Zeile++)
+    {
+        for (Position = 0; Position < 8; Position++)
+        {
+
+                    matrix [y_Wert] [x_Wert] = 1;
+            printf("%d ", matrix [Zeile] [Position]);
+        }
+        printf("\n");
+    }
+    printf("w = Oben, a= links, d = rechts, s = unten");
+    scanf( "%c", &zug);
+    matrix [y_Wert] [x_Wert] = 0;
+    if (zug == 'w')
+    {
+        y_Wert--;
+    }
+    if (zug == 'd')
+    {
+        x_Wert ++;
+    }
+        if (zug == 'a')
+    {
+        x_Wert --;
+    }
+    if (zug == 's')
+    {
+        y_Wert ++;
+    }
+    if (x_Wert < 0)
+    {
+        x_Wert = 7;
+    }
+        if (x_Wert > 7)
+    {
+        x_Wert = 0;
+    }
+        if (y_Wert < 0)
+    {
+        y_Wert = 7;
+    }
+        if (y_Wert > 7)
+    {
+        y_Wert = 0;
+    }
+
+    }while(zug != 'x');
+    return 0;
+}
