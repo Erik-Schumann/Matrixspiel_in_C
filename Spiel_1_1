@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+int main()
+{
+    int Zeile, Position, matrix [8] [8] =  {0}, x_Wert = 0, y_Wert = 0, y_alt = 0, x_alt = 0, game_over = 0, Sieg = 0;
+    char zug;
+
+    printf("Willkommen:\nDu willst die 2 erreichen \n7 sind boese Waechter, die dich gefangen nehmen\n");
+    system("pause");
+    do{
+            system("cls");
+            for (Zeile = 0; Zeile < 8; Zeile++)
+    {//game over
+                            if (y_Wert == 3 && x_Wert == 4 || y_Wert == 4 && x_Wert == 4|| y_Wert == 5 && x_Wert == 4|| y_Wert == 6 && x_Wert == 4)
+                    {
+                        game_over++;
+                        printf("Game over");
+                        break;
+                    }
+                    if (y_Wert == 7&& x_Wert == 7)
+                    {
+                        Sieg++;
+                        printf("Sieg");
+                        break;
+                    }
+        for (Position = 0; Position < 8; Position++)
+        {
+
+                    matrix [y_Wert] [x_Wert] = 1;
+                    matrix [3][4] = 7;//Barrieren
+                    matrix [4][4] = 7;
+                    matrix [5][4] = 7;
+                    matrix [6][4] = 7;
+                    matrix [7] [7] = 2;
+                    printf("%d ", matrix [Zeile] [Position]);
+        }
+        printf("\n");
+    }
+    if (game_over == 0 && Sieg == 0){
+    printf("w = Oben\na= links\nd = rechts\ns = unten\nx = beenden\n");}
+    scanf( "%c", &zug);
+    matrix [y_Wert] [x_Wert] = 0;
+    if (zug == 'w')
+    {
+        y_Wert--;
+    }
+    if (zug == 'd')
+    {
+        x_Wert ++;
+    }
+        if (zug == 'a')
+    {
+        x_Wert --;
+    }
+    if (zug == 's')
+    {
+        y_Wert ++;
+    }
+    if (x_Wert < 0)
+    {
+        x_Wert = 7;
+    }
+        if (x_Wert > 7)
+    {
+        x_Wert = 0;
+    }
+        if (y_Wert < 0)
+    {
+        y_Wert = 7;
+    }
+        if (y_Wert > 7)
+    {
+        y_Wert = 0;
+    }
+
+    }while(zug != 'x' && game_over == 0 && Sieg == 0);
+    return 0;
+}
